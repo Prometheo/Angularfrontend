@@ -14,5 +14,5 @@ export class SignupComponent implements OnInit {
   }
 
   userTypes = ["Developer", "Owner"];
-  scrumUserModel = new Scrumuser('','louis','popson@1996','Developer');
+  scrumUserModel = new Scrumuser('','louis oma','','Developer');
 }
