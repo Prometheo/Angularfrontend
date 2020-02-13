@@ -21,7 +21,7 @@
         <div class="form_group">
             <label for="">Password:</label>
             <input required name="password" type="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W]).{8,}" #password=ngModel  [class.is-invalid]='password.touched && password.invalid' [class.is-valid]='password.valid' class="form-control" placeholder="*****" [(ngModel)]="scrumUserModel.password">
-            <div *ngIf="password.errors && (password.touched || password.invalid)">
+            <div *ngIf="password.errors && (password.touched && password.invalid)">
                 <small *ngIf="password.errors.required" class="text-danger">Password Required</small>
                 <small *ngIf="password.errors.pattern" class="text-danger">Password must contain a special character and must be atleast 8 characters long</small>
 
