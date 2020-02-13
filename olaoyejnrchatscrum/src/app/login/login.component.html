@@ -1,0 +1,27 @@
+<div class="container-fluid">
+        <h1>Welcome please login here</h1>
+        <form >
+            <div class="form_group">
+                <label for="">Email:</label>
+                <input required type="email" pattern="[\w]+[@][\D]+[.][\D]+" [class.is-invalid]='email.touched && email.invalid' #email=ngModel class="form-control" name="email "[(ngModel)]="scrumUserModel.email"> 
+        
+                <small *ngIf="email.invalid && email.touched" class="text-danger">Error: please provide a valid email</small>
+            </div>
+            <!-- <div class="form_group">
+                <label for="">Password:</label>
+                <input name="password" type="password" class="form-control">
+            </div> -->
+            <div class="form_group">
+                <label for="">Password:</label>
+                <input required name="password" type="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W\S]).{8,}" #password=ngModel  [class.is-invalid]='password.touched && password.invalid' [class.is-valid]='password.valid' class="form-control" placeholder="*****" [(ngModel)]="scrumUserModel.password">
+               
+                    <small *ngIf="password.invalid && password.touched" class="text-danger">Password Error please check and make sure you folow the pattern</small>
+            </div>
+            <div class="form_group">
+                <label for="">Project name:</label>
+                <input type="text" class="form-control">
+            </div>
+                <br>
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>

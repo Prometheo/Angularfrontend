@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <h1>Create new User</h1>
+    <h6>
+        {{userSignupForm.value | json}}
+    </h6>
+    <br>
+    <h4>
+        {{scrumUserModel | json}}
+    </h4>
+    <form #userSignupForm="ngForm">
+        <div class="form_group">
+            <label for="">Email:</label>
+            <input required type="email" pattern="[\w]+[@][\D]+[.][\D]+" [class.is-invalid]='email.touched && email.invalid' [class.is-valid]='email.valid' #email=ngModel class="form-control" name="email "[(ngModel)]="scrumUserModel.email">
+
+                <small *ngIf="email.invalid && email.touched" class="text-danger">Error: please provide a valid email</small>
+        </div>
+        <div class="form_group">
+            <label for="">Full Name:</label>
+            <input name="fullname" type="text" class="form-control" [(ngModel)]="scrumUserModel.fullname">
+        </div>
+        <div class="form_group">
+            <label for="">Password:</label>
+            <input required name="password" type="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W]).{8,}" #password=ngModel  [class.is-invalid]='password.touched && password.invalid' [class.is-valid]='password.valid' class="form-control" placeholder="*****" [(ngModel)]="scrumUserModel.password">
+            <div *ngIf="password.errors && (password.touched || password.invalid)">
+                <small *ngIf="password.errors.required" class="text-danger">Password Required</small>
+                <small *ngIf="password.errors.pattern" class="text-danger">Password must contain a special character and must be atleast 8 characters long</small>
+
+            </div>
+            <!-- <h2>
+                <small *ngIf="password.invalid" class="text-danger">Password Error please check and make sure you folow the pattern</small>
+            </h2> -->
+        </div>
+        <div class="form_group">
+            <label for="">User Types</label>
+            <select class="custom-select" name="usertype" [(ngModel)]="scrumUserModel.type">
+                <option value="">sign up as</option>
+                <option *ngFor="let type of userTypes">{{type}}</option>
+            </select>
+            </div>
+            <br>
+        <button class="btn btn-primary">Create User</button>
+    </form>
+</div>
