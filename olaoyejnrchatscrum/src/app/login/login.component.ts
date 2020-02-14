@@ -13,6 +13,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  scrumUserModel = new Scrumuser('johndoe@gmail.com','','prometheus','');
+  scrumUserModel = new Scrumuser('','','','');
 
 }
