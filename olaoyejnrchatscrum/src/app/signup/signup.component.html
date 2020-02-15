@@ -4,16 +4,20 @@
     <h4>
         {{scrumUserModel | json}}
     </h4>
-    <form #userSignupForm="ngForm">
+    <form #userSignupForm="ngForm" novalidate (ngSubmit)="onSubmit()">
         <div class="form_group">
             <label for="">Email:</label>
             <input required type="email" pattern="[\w]+[@][\D]+[.][\D]+" [class.is-invalid]='email.touched && email.invalid' [class.is-valid]='email.valid' #email=ngModel class="form-control" placeholder="johndoe@gmail.com" name="email "[(ngModel)]="scrumUserModel.email">
-
-                <small *ngIf="email.invalid && email.touched" class="text-danger">Error: please provide a valid email</small>
+            <div *ngIf="email.errors && (email.touched && email.invalid)">
+                    <small *ngIf="email.errors.required" class="text-danger">Email Required</small>
+                    <small *ngIf="email.errors.pattern" class="text-danger">please provide a valid email address</small>
+    
+            </div>
         </div>
         <div class="form_group">
             <label for="">Full Name:</label>
-            <input name="fullname" type="text" class="form-control" [(ngModel)]="scrumUserModel.fullname">
+            <input required name="fullname" type="text" #fullname=ngModel  class="form-control" [(ngModel)]="scrumUserModel.fullname">
+            <small *ngIf="fullname.invalid && fullname.touched" class="text-danger">please provide a name</small>
         </div>
         <div class="form_group">
             <label for="">Password:</label>
