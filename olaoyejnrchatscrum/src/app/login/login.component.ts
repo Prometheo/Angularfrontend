@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Scrumuser } from '../scrumuser';
+import { Loginuser } from '../scrumuser';
 
 
 @Component({
@@ -13,6 +13,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  scrumUserModel = new Scrumuser('','','','');
+  loginUserModel = new Loginuser('','','');
 
 }
