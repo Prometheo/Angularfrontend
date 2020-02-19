@@ -27,18 +27,25 @@
                 <small *ngIf="password.errors.pattern" class="text-danger">Please make sure password contains a special character and a number and >=8 characters</small>
 
             </div>
-            <!-- <h2>
-                <small *ngIf="password.invalid" class="text-danger">Password Error please check and make sure you folow the pattern</small>
-            </h2> -->
+            <div class="form_group">
+                <label for="">project Name:</label>
+                <input required name="projname" type="text" pattern="\w+"  #projname=ngModel  class="form-control" [(ngModel)]="scrumUserModel.projname">
+                <small *ngIf="projname.invalid && projname.touched" class="text-danger">please provide a project name</small>
+            </div>
         </div>
         <div class="form_group">
             <label for="">User Types</label>
-            <select class="custom-select" name="usertype" [(ngModel)]="scrumUserModel.type">
+            <select required class="custom-select form-control" name="usertype" #usertype=ngModel [(ngModel)]="scrumUserModel.type">
                 <option value="">sign up as</option>
                 <option *ngFor="let type of userTypes">{{type}}</option>
+                <small *ngIf="usertype.touched" class="text-danger">please specify a user type</small>
             </select>
             </div>
             <br>
         <button class="btn btn-primary btn-lg">Create User</button>
     </form>
+    <h5> {{feedback}}</h5>
+</div>
+<div class="container">
+    <h3>Already have an account? sign in <a routerLink='/login'>here</a></h3>
 </div>
