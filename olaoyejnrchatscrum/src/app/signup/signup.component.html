@@ -38,8 +38,8 @@
             <select required class="custom-select form-control" name="usertype" #usertype=ngModel [(ngModel)]="scrumUserModel.type">
                 <option value="">sign up as</option>
                 <option *ngFor="let type of userTypes">{{type}}</option>
-                <small *ngIf="usertype.touched" class="text-danger">please specify a user type</small>
             </select>
+            <small *ngIf="usertype.invalid && usertype.touched" class="text-danger">please specify a user type</small>
             </div>
             <br>
         <button class="btn btn-primary btn-lg">Create User</button>
